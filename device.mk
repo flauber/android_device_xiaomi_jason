@@ -127,6 +127,9 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras \
     vendor.nxp.hardware.nfc@1.2-service \
+    vendor.nxp.hardware.nfc@2.0-service \
+    vendor.nxp.nxpnfclegacy@1.0.vendor \
+    se_nq_extn_client \
     nfc_nci.nqx.default.hw
 
 PRODUCT_SOONG_NAMESPACES += vendor/nxp/opensource/pn5xx
