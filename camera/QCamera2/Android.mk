@@ -7,8 +7,8 @@ include $(CLEAR_VARS)
 SDCLANG_COMMON_DEFS := $(LOCAL_PATH)/sdllvm-common-defs.mk
 SDCLANG_FLAG_DEFS := $(LOCAL_PATH)/sdllvm-flag-defs.mk
 
-LOCAL_COPY_HEADERS_TO := qcom/camera
-LOCAL_COPY_HEADERS := QCameraFormat.h
+#LOCAL_COPY_HEADERS_TO := qcom/camera
+#LOCAL_COPY_HEADERS := QCameraFormat.h
 
 ifneq ($(call is-platform-sdk-version-at-least,28),true)
 IS_QC_BOKEH_SUPPORTED := true
@@ -124,6 +124,7 @@ LOCAL_HEADER_LIBRARIES += libcutils_headers
 LOCAL_HEADER_LIBRARIES += libsystem_headers
 LOCAL_HEADER_LIBRARIES += libhardware_headers
 LOCAL_HEADER_LIBRARIES += display_headers
+LOCAL_HEADER_LIBRARIES := camera_common_headers
 
 #HAL 1.0 Include paths
 LOCAL_C_INCLUDES += \
