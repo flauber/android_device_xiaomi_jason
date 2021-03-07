@@ -24,6 +24,9 @@
 # Inherit from sdm660-common
 $(call inherit-product, device/xiaomi/sdm660-common/sdm660.mk)
 
+# Inherit the proprietary files
+$(call inherit-product, vendor/xiaomi/jason/jason-vendor.mk)
+
 # Setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
@@ -86,6 +89,9 @@ PRODUCT_PACKAGES += \
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sf.lcd_density=420
+    
+PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.display.ad=1 \
     ro.vendor.display.ad.sdr_calib_data=/system/vendor/etc/sdr_config.cfg \
     ro.vendor.display.ad.hdr_calib_data=/system/vendor/etc/hdr_config.cfg \
@@ -94,6 +100,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl \
     $(LOCAL_PATH)/keylayout/synaptics_dsx.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/synaptics_dsx.kl
+    
+# Dual SIM
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.radio.multisim.config=dsds
 
 # Gatekeeper HAL
 PRODUCT_PACKAGES += \
@@ -127,7 +137,7 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras \
     vendor.nxp.hardware.nfc@1.2-service \
-    vendor.nxp.hardware.nfc@2.0-service \
+    #vendor.nxp.hardware.nfc@2.0-service \
     vendor.nxp.nxpnfclegacy@1.0.vendor \
     se_nq_extn_client \
     nfc_nci.nqx.default.hw
@@ -162,6 +172,15 @@ PRODUCT_PACKAGES += \
 # Telephony
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.force_on_dc=true
+    
+# Torch
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml
+
+# Vibrator
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.0-impl \
+    android.hardware.vibrator@1.0-service
 
 # USB
 PRODUCT_PACKAGES += \
@@ -175,6 +194,3 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     JasonWifiOverlay \
     readmac
-
-# Inherit the proprietary files
-$(call inherit-product, vendor/xiaomi/jason/jason-vendor.mk)
