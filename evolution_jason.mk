@@ -22,7 +22,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_n_mr1.mk)
 
 # Inherit from jason device
-$(call inherit-product, $(LOCAL_PATH)/device.mk)
+$(call inherit-product, device/xiaomi/jason/device.mk)
 
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/evolution/config/common_full_phone.mk)
