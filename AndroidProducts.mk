@@ -15,8 +15,3 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/evolution_jason.mk
-    
-COMMON_LUNCH_CHOICES := \
-    evolution_jason-user \
-    evolution_jason-userdebug \
-    evolution_jason-eng
